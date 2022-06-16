@@ -1,0 +1,27 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest' // restAPI 구현을 위한 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // jsp 구현을 위한 라이브러리
+
+    runtimeOnly 'com.h2database:h2' // 관계형 데이터베이스 h2
+
+    // 롬복 의존성 추가 후 plugIn 추가 필요.
+    annotationProcessor("org.projectlombok:lombok:")
+    compileOnly("org.projectlombok:lombok:")
+}
+
+test {
+    useJUnitPlatform()
+}
